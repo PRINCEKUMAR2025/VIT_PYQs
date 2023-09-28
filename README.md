@@ -1,5 +1,4 @@
- VIT PYQs
-  
+VIT PYQs
 Short Discription
 
 A VIT PYQs is a mobile application designed to provide access to a repository of past examination questions from various academic and competitive exams. Users can use the app to prepare for upcoming exams by practicing with questions and answers from previous years. These apps often offer features like subject-wise categorization, topic-wise sorting, and mock tests to help users gauge their preparedness and improve their performance. They are valuable study aids for students and individuals seeking to excel in their exams by familiarizing themselves with the types of questions that have been asked in the past.
@@ -42,7 +41,6 @@ App-Images
 ![4](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/28703347-2e6c-4588-9a5b-d2f5576f029c)
 ![5](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/51ff2bd0-b946-489e-88c2-f88fe6e3e29a)
 ![6](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/5b65b67f-e1de-48de-8b83-75c95068c440)
-
 Contact Us
 Developer - Prince
 Email address - evilstudios111@gmail.com
