@@ -1,4 +1,4 @@
-![114](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/1569557d-3d02-42e0-8999-f021610a1741)
+![mylogo](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/c4679a2b-21c4-4109-9d37-d2e72c43a292)
 
 VIT PYQs
 
@@ -51,13 +51,14 @@ VIT, Study, prepare, previous, year, Papers, for, questions, PYQs, exam, CAT, FA
 
 App-Images
 
-![7](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/d4200d7e-1810-4545-9ac2-8fa02e4d25ae)
-![1](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/bb8c7c62-3231-45a9-91d2-f104307b5da1)
-![2](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/155a60f7-cffe-4a8e-a02b-87c21603932b)
-![3](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/5e2683c2-f011-452d-a1a9-fea49ae1ea0e)
-![4](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/28703347-2e6c-4588-9a5b-d2f5576f029c)
-![5](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/51ff2bd0-b946-489e-88c2-f88fe6e3e29a)
-![6](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/5b65b67f-e1de-48de-8b83-75c95068c440)
+
+![1](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/f291f18c-5c38-40c6-9fde-2b2a51d3909a)
+![2](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/591c187f-1686-48df-9b40-ee9e3d1c0bc9)
+![3](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/5e14b28c-2b32-4b98-a808-cadfe7729807)
+![4](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/350b487a-5d57-4bb7-b25c-3af2c2b97ce9)
+![5](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/03cb2fe7-3df2-42df-87a6-b833ce654fb7)
+![6](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/aafdf1fc-9071-47e4-a425-56c660b67d81)
+![7](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/15ff8259-6898-4cd6-af44-8f9eb0844fca)
 
 Contact Us
 
