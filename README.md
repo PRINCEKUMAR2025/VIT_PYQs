@@ -1,4 +1,4 @@
-![mylogo](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/c4679a2b-21c4-4109-9d37-d2e72c43a292)
+![114](https://github.com/PRINCEKUMAR2025/VIT_PYQs/assets/96488489/ad982ef9-f58e-4072-b583-ec3cfc46db1a)
 
 VIT PYQs
 
