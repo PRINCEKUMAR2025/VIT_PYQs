@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/sky"
+    android:background="@drawable/back"
     tools:context="Register">
 
     <ProgressBar
@@ -50,12 +50,12 @@
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:gravity="center_horizontal"
+            android:background="@drawable/background_input"
             android:drawableStart="@drawable/name"
             android:hint="Enter your name"
             android:inputType="textPersonName"
@@ -65,14 +65,14 @@
         <EditText
             android:id="@+id/etMail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/background_input"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:drawableStart="@drawable/email"
-            android:hint="Enter your email address"
+            android:hint="Enter your email"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -80,14 +80,14 @@
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/background_input"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:drawableStart="@drawable/password"
-            android:hint="Enter your password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -95,14 +95,14 @@
         <EditText
             android:id="@+id/etReEnter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/background_input"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:drawableStart="@drawable/password2"
             android:ems="10"
-            android:gravity="center_horizontal"
-            android:hint="Re-Enter your password"
+            android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -115,7 +115,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/buttons"
-            android:text="Register"
+            android:text="Sign Up"
             android:textColor="@color/ic_launcher_background"
             android:textStyle="bold" />
     </LinearLayout>

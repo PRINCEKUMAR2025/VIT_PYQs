@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     android:orientation="vertical"
-    android:background="@drawable/sky"
     tools:context="Login">
 
     <ProgressBar
@@ -43,14 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:text="Login"
+            android:text="Welcome!"
             android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="290dp"
+            android:layout_height="260dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
@@ -59,7 +59,7 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="270dp"
                 android:id="@+id/imageSlider"
                 app:iss_period="1400"
                 app:iss_auto_cycle="true"
@@ -72,15 +72,14 @@
         <EditText
             android:id="@+id/etMail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/black"
+            android:background="@drawable/background_input"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:drawableStart="@drawable/email"
-            android:hint="Enter your Email-id"
+            android:hint="Enter your email"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -88,15 +87,14 @@
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/black"
+            android:background="@drawable/background_input"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:drawableStart="@drawable/password"
-            android:hint="Enter your password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
@@ -129,7 +127,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttons"
-                android:text="Login"
+                android:text="Sign In"
                 android:textColor="@color/ic_launcher_background"
                 android:textStyle="bold" />
         </LinearLayout>

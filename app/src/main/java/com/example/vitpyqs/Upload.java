@@ -1,8 +1,11 @@
 package com.example.vitpyqs;
 
+import com.google.firebase.database.Exclude;
+
 public class Upload {
     private String mName;
     private String mImageUrl;
+    private String mKey;
 
     public Upload() {
         //empty constructor needed
@@ -31,5 +34,14 @@ public class Upload {
 
     public void setImageUrl(String imageUrl) {
         mImageUrl = imageUrl;
+    }
+
+    @Exclude
+    public String getKey(){
+        return mKey;
+    }
+    @Exclude
+    public void setKey(String key){
+        mKey = key;
     }
 }

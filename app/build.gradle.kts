@@ -47,6 +47,7 @@ dependencies {
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
     implementation("com.backendless:backendless:7.0-alpha")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
+    implementation("com.airbnb.android:lottie:3.7.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

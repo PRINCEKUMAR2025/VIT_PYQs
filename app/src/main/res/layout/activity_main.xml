@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky"
+    android:background="@drawable/back"
     android:padding="16dp"
     tools:context="com.example.vitpyqs.MainActivity">
 
@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/white"
         android:layout_toEndOf="@+id/button_choose_image"
         android:hint="Enter Like DAA-CAT1-1" />
 
@@ -55,6 +57,7 @@
         android:layout_alignTop="@+id/button_upload"
         android:layout_marginStart="25dp"
         android:layout_toEndOf="@+id/button_upload"
+        android:textColor="@color/black"
         android:gravity="center"
         android:textStyle="bold"
         android:text="Show Papers"
@@ -70,6 +73,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         android:clickable="true"
+        android:textColor="@color/black"
         android:layout_toEndOf="@+id/button_upload"
         android:gravity="center"
         android:textStyle="bold"
