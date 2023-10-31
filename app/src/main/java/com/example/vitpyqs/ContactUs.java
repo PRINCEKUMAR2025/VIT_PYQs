@@ -30,7 +30,7 @@ public class ContactUs extends AppCompatActivity {
         github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PRINCEKUMAR2025?tab=repositories"));
+                Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PRINCEKUMAR2025/VIT_PYQs"));
                 startActivity(intent);
             }
         });

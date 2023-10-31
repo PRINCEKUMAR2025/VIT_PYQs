@@ -69,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         if (email.equals(admin)){
-            Toast.makeText(this, "Admin Access!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Admin Access", Toast.LENGTH_LONG).show();
         }
+
+        Toast.makeText(this, "Welcome: "+email, Toast.LENGTH_SHORT).show();
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override

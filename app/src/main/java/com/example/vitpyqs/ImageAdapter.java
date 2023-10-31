@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
-    private Context mContext;
+    private final Context mContext;
     private List<Upload> mUploads;
 
     private OnItemClickListener mListener;
@@ -81,7 +81,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Options");
             MenuItem download = menu.add(Menu.NONE,1,1,"Download");
             MenuItem delete = menu.add(Menu.NONE,2,2,"Delete");
 

@@ -6,6 +6,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -105,24 +108,29 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
         Toast.makeText(this, "Hold image to download", Toast.LENGTH_SHORT).show();
     }
 
+    public static void downloadImage(Context context, String imageUrl, String fileName) {
+        try {
+            Uri uri = Uri.parse(imageUrl);
+
+            DownloadManager.Request request = new DownloadManager.Request(uri);
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_PICTURES, fileName);
+
+            DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+            downloadManager.enqueue(request);
+        } catch (Exception e) {
+            Log.e("ImageDownloader", "Error downloading image: " + e.getMessage());
+            Toast.makeText(context, "Download failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void Download(int position) {
-        Upload selectedItem = mUploads.get(position);
-        final String selectedKey = selectedItem.getKey();
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl());
-        File localFile = new File(Environment.getExternalStorageDirectory(), "VIT_PYQs.jpg");
-        imageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(ImagesActivity.this, "Image downloaded to local storage", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ImagesActivity.this, "Download failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Upload selectedItem= mUploads.get(position);
+        String selectedImage= selectedItem.getImageUrl();
+        String fileName = "vit_pyq_image.jpg";
+        downloadImage(getApplicationContext(), selectedImage, fileName);
+        Toast.makeText(this, "Downloading file...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
