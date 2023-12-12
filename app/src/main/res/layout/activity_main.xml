@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@color/white"
     android:padding="16dp"
     tools:context="com.example.vitpyqs.MainActivity">
 
@@ -12,6 +12,8 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/white"
         android:text="Choose Paper" />
 
     <EditText
@@ -19,10 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/white"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/black"
         android:layout_toEndOf="@+id/button_choose_image"
-        android:hint="Enter Like DAA-CAT1-1" />
+        android:hint="Enter Like DAA-CAT1" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -31,6 +33,16 @@
         android:layout_above="@id/progress_bar"
         android:layout_below="@id/edit_text_file_name"
         android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/previewMessage"
+        android:textSize="30dp"
+        android:text="No File Selected"
+        android:gravity="center"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -41,13 +53,13 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Upload Paper" />
+        android:background="@drawable/uploadlogo"/>
 
     <TextView
         android:id="@+id/text_view_show_uploads"
@@ -69,15 +81,18 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button_upload"
         android:layout_alignBottom="@+id/button_upload"
-        android:layout_marginStart="-244dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:clickable="true"
-        android:textColor="@color/black"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="-3dp"
+        android:layout_toStartOf="@+id/button_upload"
         android:layout_toEndOf="@+id/button_upload"
+        android:clickable="true"
         android:gravity="center"
-        android:textStyle="bold"
-        android:text="      Contact us!"
-        android:textSize="15sp" />
+        android:text="Contact us!"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

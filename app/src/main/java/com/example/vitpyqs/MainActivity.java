@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private Button mButtonChooseImage;
-    private Button mButtonUpload;
-    private TextView mTextViewShowUploads,contact_us;
+    private ImageButton mButtonUpload;
+    private TextView mTextViewShowUploads,contact_us,previewMessage;
     private EditText mEditTextFileName;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         mButtonUpload = findViewById(R.id.button_upload);
         mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
+        previewMessage=findViewById(R.id.previewMessage);
         contact_us=findViewById(R.id.contact_us);
         mEditTextFileName = findViewById(R.id.edit_text_file_name);
         mImageView = findViewById(R.id.image_view);
@@ -70,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (email.equals(admin)){
             Toast.makeText(this, "Admin Access", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this, "Welcome: "+email, Toast.LENGTH_SHORT).show();
         }
-
-        Toast.makeText(this, "Welcome: "+email, Toast.LENGTH_SHORT).show();
-
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                previewMessage.setVisibility(View.INVISIBLE);
                 openFileChooser();
             }
         });

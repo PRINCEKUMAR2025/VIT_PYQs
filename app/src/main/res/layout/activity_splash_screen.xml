@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@color/white"
     tools:context=".SplashScreen">
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="VITPYQs\nDesigned By Prince"
-        android:textColor="@color/white"
+        android:textColor="@color/primary"
         android:textSize="30dp"
         android:textStyle="bold" />
     <com.airbnb.lottie.LottieAnimationView

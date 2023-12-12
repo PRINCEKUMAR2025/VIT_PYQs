@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="Login">
 
@@ -44,7 +44,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="Welcome!"
-            android:textColor="@color/black"
+            android:textColor="@color/primary"
             android:textSize="35dp"
             android:textStyle="bold" />
 
@@ -106,41 +106,42 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/buttons"
-                android:text="Sign Up"
-                android:textColor="@color/ic_launcher_background"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttons"
+                android:textSize="20dp"
                 android:text="Sign In"
+                android:textAllCaps="false"
                 android:textColor="@color/ic_launcher_background"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:text="Create New Account"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/tvReset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:clickable="true"
             android:gravity="center_horizontal"
             android:text="Forgot Password? Reset Here"
-            android:textColor="#0000b2"
+            android:textColor="@color/error"
             android:textStyle="bold" />
 
     </LinearLayout>

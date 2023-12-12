@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/back"
+    android:background="@color/white"
     tools:context="Register">
 
     <ProgressBar
@@ -116,6 +116,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/buttons"
             android:text="Sign Up"
+            android:textAllCaps="false"
             android:textColor="@color/ic_launcher_background"
             android:textStyle="bold" />
     </LinearLayout>

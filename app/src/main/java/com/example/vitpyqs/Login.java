@@ -31,8 +31,8 @@ public class Login extends AppCompatActivity {
     private View mLoginFormView;
     private TextView tvLoad;
     EditText etMail,etPassword;
-    Button btnLogin,btnRegister;
-    TextView tvReset,textView4;
+    Button btnLogin;
+    TextView tvReset,btnRegister;
 
 
     @Override
@@ -49,7 +49,6 @@ public class Login extends AppCompatActivity {
         btnLogin=findViewById(R.id.btnLogin);
         btnRegister=findViewById(R.id.btnRegister);
         tvReset=findViewById(R.id.tvReset);
-        textView4=findViewById(R.id.textView4);
 
         ImageSlider imageSlider=findViewById(R.id.imageSlider);
         ArrayList<SlideModel> slideModels=new ArrayList<>();

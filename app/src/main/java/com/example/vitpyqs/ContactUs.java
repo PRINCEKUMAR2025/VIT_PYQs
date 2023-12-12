@@ -21,18 +21,8 @@ public class ContactUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
-        github=findViewById(R.id.github);
         textView=findViewById(R.id.textView);
 
         textView.setText("ThankYou For Using this Application "+email);
-
-
-        github.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PRINCEKUMAR2025/VIT_PYQs"));
-                startActivity(intent);
-            }
-        });
     }
 }

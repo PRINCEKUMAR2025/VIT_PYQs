@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/back"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".ContactUs">
 
@@ -14,7 +14,7 @@
         android:layout_height="40dp"
         android:gravity="center_horizontal"
         android:text="For Any Query"
-        android:textColor="@color/white"
+        android:textColor="@color/primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,36 +38,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389" />
-
-
-    <Button
-        android:id="@+id/github"
-        android:layout_width="146dp"
-        android:layout_height="51dp"
-        android:text="GitHub"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:text="Click Here\nTo contribute in this project"
-        android:gravity="center"
-        android:textColor="@color/design_default_color_error"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
 
     <TextView
         android:id="@+id/textView"
