@@ -50,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     private StorageTask mUploadTask;
 
-    public String admin = "evilstudios111@gmail.com";
-    public String email=ApplicationClass.user.getEmail();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
-
-        if (email.equals(admin)){
-            Toast.makeText(this, "Admin Access", Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this, "Welcome: "+email, Toast.LENGTH_SHORT).show();
-        }
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,59 +127,52 @@ public class MainActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void uploadFile(){
-        if (mImageUri != null){
-            StorageReference fileReference=mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
-            if (email.equals(admin)) {
-                mUploadTask = fileReference.putFile(mImageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        mProgressBar.setProgress(100);
-                                    }
-                                }, 500);
+    private void uploadFile() {
+        if (mImageUri != null) {
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
 
-                                Toast.makeText(MainActivity.this, "Upload Successful", Toast.LENGTH_LONG).show();
+            mUploadTask = fileReference.putFile(mImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(100);
+                                }
+                            }, 500);
 
-                                Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
-                                while (!urlTask.isSuccessful()) ;
-                                Uri downloadUrl = urlTask.getResult();
+                            Toast.makeText(MainActivity.this, "Upload Successful", Toast.LENGTH_LONG).show();
 
-                                //Log.d(TAG, "onSuccess: firebase download url: " + downloadUrl.toString()); //use if testing...don't need this line.
-                                Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString());
+                            Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!urlTask.isSuccessful());
+                            Uri downloadUrl = urlTask.getResult();
 
-                                String uploadId = mDatabaseRef.push().getKey();
-                                mDatabaseRef.child(uploadId).setValue(upload);
-//                                Upload upload=new Upload(mEditTextFileName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-//
-//                                String uploadId =mDatabaseRef.push().getKey();
-//                                mDatabaseRef.child(uploadId).setValue(upload);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                Toast.makeText(MainActivity.this, "Uploading File Please Wait", Toast.LENGTH_SHORT).show();
-                                mProgressBar.setProgress(0);
-                            }
-                        });
-            }else {
-                Toast.makeText(MainActivity.this, "Need Admin Access!!\nContact evilstudios111@gmail.com", Toast.LENGTH_LONG).show();
-            }
-        }else {
-            Toast.makeText(this,"No file selected",Toast.LENGTH_SHORT).show();
+                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString());
+
+                            String uploadId = mDatabaseRef.push().getKey();
+                            mDatabaseRef.child(uploadId).setValue(upload);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            Toast.makeText(MainActivity.this, "Uploading File Please Wait", Toast.LENGTH_SHORT).show();
+                            mProgressBar.setProgress(0);
+                        }
+                    });
+        } else {
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
+
     private void openImagesActivity(){
         Intent intent=new Intent(this, ImagesActivity.class);
         startActivity(intent);

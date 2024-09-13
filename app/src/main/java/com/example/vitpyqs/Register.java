@@ -1,134 +1,94 @@
 package com.example.vitpyqs;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.backendless.Backendless;
-import com.backendless.BackendlessUser;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
-import com.example.vitpyqs.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
-    private View mProgressView;
-    private View mLoginFormView;
-    private TextView tvLoad;
-
-    EditText etName,etMail,etPassword,etReEnter;
-    ImageView imageView5;
-    Button btnRegister;
+    EditText name, email, password;
+    ProgressBar progress;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-        tvLoad = findViewById(R.id.tvLoad);
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance();
 
-        etName=findViewById(R.id.etName);
-        etMail=findViewById(R.id.etMail);
-        etPassword=findViewById(R.id.etPassword);
-        etReEnter=findViewById(R.id.etReEnter);
-        btnRegister=findViewById(R.id.btnRegister);
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(etName.getText().toString().isEmpty() || etMail.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty() || etReEnter.getText().toString().isEmpty())
-                {
-                    Toast.makeText(Register.this, "Please Enter All Details!", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if (etPassword.getText().toString().trim().equals(etReEnter.getText().toString().trim())){
-                        String name=etName.getText().toString().trim();
-                        String email=etMail.getText().toString().trim();
-                        String password=etPassword.getText().toString().trim();
-
-                        BackendlessUser user=new BackendlessUser();
-                        user.setEmail(email);
-                        user.setPassword(password);
-                        user.setProperty("name",name);
-
-                        showProgress(true);
-                        tvLoad.setText("Registering User..");
-
-                        Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
-                            @Override
-                            public void handleResponse(BackendlessUser response) {
-                                Toast.makeText(Register.this, "Verification Link Sent to your mail..", Toast.LENGTH_SHORT).show();
-                                Register.this.finish();
-                            }
-
-                            @Override
-                            public void handleFault(BackendlessFault fault) {
-                                Toast.makeText(Register.this, "Error:"+fault.getMessage(), Toast.LENGTH_SHORT).show();
-                                showProgress(false);
-                            }
-                        });
-                    }
-                    else {
-                        Toast.makeText(Register.this, "Please make sure your password and re-enter password are same!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-    }
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-
-            tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-            tvLoad.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            tvLoad.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        // If user is already logged in, redirect to MainActivity
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(Register.this, MainActivity.class));
+            finish();
         }
+
+        // Initialize UI elements
+        name = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        progress = findViewById(R.id.progress);
+    }
+
+    public void signup(View view) {
+        progress.setVisibility(View.VISIBLE);
+        String userName = name.getText().toString();
+        String userEmail = email.getText().toString();
+        String userPassword = password.getText().toString();
+
+        // Validate inputs
+        if (TextUtils.isEmpty(userName)) {
+            name.setError("Name Required");
+            progress.setVisibility(View.INVISIBLE);
+            return;
+        }
+        if (TextUtils.isEmpty(userEmail)) {
+            email.setError("Email Required");
+            progress.setVisibility(View.INVISIBLE);
+            return;
+        }
+        if (TextUtils.isEmpty(userPassword)) {
+            password.setError("Set your password");
+            progress.setVisibility(View.INVISIBLE);
+            return;
+        }
+        if (userPassword.length() < 6) {
+            Toast.makeText(this, "Password too short, enter at least 6 characters.", Toast.LENGTH_SHORT).show();
+            progress.setVisibility(View.INVISIBLE);
+            return;
+        }
+
+        // Create user with Firebase Authentication
+        auth.createUserWithEmailAndPassword(userEmail, userPassword)
+                .addOnCompleteListener(Register.this, task -> {
+                    progress.setVisibility(View.INVISIBLE);
+                    if (task.isSuccessful()) {
+                        // Registration successful
+                        Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Register.this, MainActivity.class));
+                        finish();
+                    } else {
+                        // Registration failed
+                        Toast.makeText(Register.this, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    public void signin(View view) {
+        // Navigate to Login activity
+        startActivity(new Intent(Register.this, Login.class));
     }
 }

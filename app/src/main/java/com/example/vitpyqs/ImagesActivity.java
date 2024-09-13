@@ -43,9 +43,6 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     private List<Upload> mUploads;
     SearchView searchView;
 
-    public String admin = "evilstudios111@gmail.com";
-    public String email=ApplicationClass.user.getEmail();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,23 +132,24 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
 
     @Override
     public void onDeleteClick(int position) {
-        if (email.equals(admin)) {
-            Upload selectedItem = mUploads.get(position);
-            final String selectedKey = selectedItem.getKey();
+        Upload selectedItem = mUploads.get(position);
+        final String selectedKey = selectedItem.getKey();
 
-            StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl());
-            imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    mDatabaseRef.child(selectedKey).removeValue();
-                    Toast.makeText(ImagesActivity.this, "Image deleted from the database", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        else {
-            Toast.makeText(this, "Need admin access to delete image", Toast.LENGTH_SHORT).show();
-        }
+        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl());
+        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                mDatabaseRef.child(selectedKey).removeValue();
+                Toast.makeText(ImagesActivity.this, "Image deleted from the database", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ImagesActivity.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     private void filterList(String text) {
         List<Upload> filteredList=new ArrayList<>();
